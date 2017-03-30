@@ -33,7 +33,7 @@ var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hul
         function addGif() {
             $('button').on('click', function() {
                 var p = $(this).data('name');
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
 
                 //ajax call
                 $.ajax({ url: queryURL, method: 'GET' })
@@ -58,7 +58,7 @@ var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hul
                             $('#gifsAddHere').prepend(gifDiv);
 
                         }
-                
+
                 $('.item').children('img').on('click', function() {
 
 

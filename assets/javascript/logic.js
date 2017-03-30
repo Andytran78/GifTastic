@@ -58,7 +58,7 @@ var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hul
                             $('#gifsAddHere').prepend(gifDiv);
 
                         }
-
+                
                 $('.item').children('img').on('click', function() {
 
 

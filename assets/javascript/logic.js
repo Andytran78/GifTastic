@@ -3,15 +3,15 @@
 var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hulk"];
 
         function renderButtons() {
-            $('#addButton').empty();
+            $("#addButton").empty();
             //for loop that iterates through array and creates button
             for (var i = 0; i < topics.length; i++) {
 
-                var button = $('<button>');
-                button.addClass('topic');
-                button.attr('data-name', topics[i]);
+                var button = $("<button>");
+                button.addClass("topic");
+                button.attr("data-name", topics[i]);
                 button.text(topics[i]);
-                $('#addButton').append(button);
+                $("#addButton").append(button);
 
             }
             addGif();
@@ -31,12 +31,12 @@ var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hul
 
         //Add function button
         function addGif() {
-            $('button').on('click', function() {
-                var p = $(this).data('name');
+            $('button').on("click", function() {
+                var p = $(this).data("name");
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
 
                 //ajax call
-                $.ajax({ url: queryURL, method: 'GET' })
+                $.ajax({ url: queryURL, method: "GET" })
                     .done(function(response) {
                         var results = response.data;
                         console.log(response);
@@ -44,32 +44,32 @@ var topics = ["Dog", "Cat", "Bird", "Space", "Iron Man", "Captian America", "Hul
                         for (var i = 0; i < results.length; i++) {
                             var gifDiv = $('<div class="item">');
                             var rating = results[i].rating;
-                            var p = $('<p>').text("Rating: " + rating);
+                            var p = $("<p>").text("Rating: " + rating);
 
-                            var giphyImg = $('<img>');
-                            giphyImg.attr('src', results[i].images.fixed_height_still.url);
-                            giphyImg.attr('data-still', results[i].images.fixed_height_still.url);
-                            giphyImg.attr('data-animate', results[i].images.fixed_height.url);
-                            giphyImg.attr('data-state', results[i].images.fixed_height_still.url);
+                            var giphyImg = $("<img>");
+                            giphyImg.attr("src", results[i].images.fixed_height_still.url);
+                            giphyImg.attr("data-still", results[i].images.fixed_height_still.url);
+                            giphyImg.attr("data-animate", results[i].images.fixed_height.url);
+                            giphyImg.attr("data-state", results[i].images.fixed_height_still.url);
 
                             gifDiv.append(giphyImg)
                             gifDiv.append(p)
 
-                            $('#gifsAddHere').prepend(gifDiv);
+                            $("#gifsAddHere").prepend(gifDiv);
 
                         }
 
-                $('.item').children('img').on('click', function() {
+                $(".item").children("img").on("click", function() {
 
 
-                    var state = $(this).attr('data-state');
+                    var state = $(this).attr("data-state");
 
-                    if (state === 'still') {
-                        $(this).attr('src', $(this).data('animate'));
-                        $(this).attr('data-state', 'animate');
+                    if (state === "still") {
+                        $(this).attr("src", $(this).data("animate"));
+                        $(this).attr("data-state", "animate");
                     } else {
-                        $(this).attr('src', $(this).data('still'));
-                        $(this).attr('data-state', 'still');
+                        $(this).attr("src", $(this).data("still"));
+                        $(this).attr("data-state", "still");
                     }
 
                 });
